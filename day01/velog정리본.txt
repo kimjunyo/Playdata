@@ -1,0 +1,198 @@
+# 1. Condition&Loop, Array
+#### _Day01-20230622_
+
+드디어 첫날이다... 이제야 내 진정한 휴학생활이 시작되는 것인가..? 
+하지만 시작할 때부터 순조롭지 않다..
+
+우선 eclipse와 jdk-11버전을 까는데 블루스크린이 두 번이나 뜬다.. 이게 무슨..
+뭐쨌든 jdk-11버전은 잘 깔렸는데 eclipse는 잘 안되서 기존에 내가 쓰던 2022-06버전으로 쓰고자 한다.
+
+우선 prompt창에서 선생님께서 기본적으로 알려주신 linux 기반 코드를 나열한다.
+```
+dir
+dir /s
+dir /s/p
+cd ..
+cd .
+```
+사실 이 때 블루스크린 땜에 좀 따라가는데 버겁긴 했지만 아이패드에 어느 정도 옮겨놔서 다행이었다. 우선
+>dir: 해당 디렉토리 전부를 보여준다.
+dir /s: 해당 디렉토리와 하위 디렉토리의 내용들을 보여준다.
+dir /s/p: 한 화면에 들어오게끔 보여준다.
+cd ..: 해당 디렉토리에서 빠져나온다.
+cd .: 해당 디렉토리에 있는디.
+
+이렇게 된다. 다음으로 고급 시스템 설정에서 시스템 입력할 때 
+C:\Program Files\Java\jdk-11\bin으로 저장을 해 놓으면 환경변수는 끝난다.
+
+jee는 java enterprise edition을 의미한다.
+
+## <명명법>
+이제 eclipse를 실행해보자. jdk-11의 library를 탐방하면
+java.base의 java.lang의 Object.class가 있는 것을 볼 수 있다.
+
+이 Object.class는 모든 class의 기반이 되고
+> Ojbect.class는 파일명
+Object는 클래스명
+Object()는 생성자
+
+이며 모두가 이름이 같아야 한다. 그 밑의 clone(), equlas(Object)는 여러가지 Method를 의미한다. :뒤에 있는 void, int 등의 데이터 타입들은 Method 실행 후 반환값을 의미한다. 
+
+간혹 가다가 SF라 되어 있는 ()가 붙지 않은, 즉 Method가 아닌 변수가 선언되는 것이 보이는데 Static Final을 의미한다.
+
+그리고 또 library에 있는 여러가지 package들이 있는데
+>java.io: 입출력에 관련된 package
+java.math: 연산자에 관련된 package
+java.net: 네트워크에 관련된 package
+java.security: 보안에 관련된 package
+
+그리고 이런 package를 명명할 때 com.kjy(이니셜)처럼 작성할 때가 다수인데, 이를 거꾸로 한 것이 도메인임을 확인 할 수 있다. 그리고 package는 무조건 소문자여야 한다. 왜 와이? 파일이니까..
+>cafe.naver.com(domain)
+com.naver.cafe(package)
+package는 무조건 소.문.자.
+
+명명법은 class에서도 개발자들끼리만의 법칙이 있다고 하더라..
+>class명: 무조건 대문자
+		  또 나오는 단어들은 앞 글자 대문자(낙타 표기법)
+
+여기서 변수까지 한다면
+>변수명:numAvg
+- 누구나 알 수 있는 그런 변수값
+- 첫글자는 소문자, but 다음 단어부터는 대문자
+
+class를 생성할 때는
+> public: 누구나 갖다 쓸 수 있는 파일임
+java.lang.Object: superclass
+public static void main(String[] args)는 프로젝트에서 오직 하나만
+
+## <단축키>
+
+```
+syso 입력 후 ctrl+space+enter=System.out.println()
+ctrl+space는 신이야
+ctrl+F11:실행
+F2: 프로젝트명 변경
+ctrl+shift+C: 주석처리
+/** : 메뉴얼처럼 사용자가 적히고, 문서가 인식함
+/* : 주석 처리, 문서가 인식하지 못함
+Home: 제일 문장 앞으로 이동
+End: 제일 문장 뒤로 이동
+shift+end: 줄 전체
+```
+파일 실행 시 다음과 같이 컴파일됩니다.
+```
+*.java->javac.exe
+bin->*.class->java.exe
+```
+이 때 bin파일을 나중에 client들에게 배포함. source 파일 배포 시 대참사(코드유출)
+## <파일 들여오기/내보내기>
+### 1. 파일 내보내기
+File->export->General->Archive file->browse->zip 파일 이름 정하고 저장
+### 2. 파일 들여오기
+File->import->Existing Projects into Workspace->Select archive file
+- import할 때 프로젝트명이 같으면 못 들여옴.
+
+## <프로젝트 관리>
+### 1. 프로젝트 삭제
+- 삭제할 때 체크를 하고 지워야 윈도우 탐색기에서 안 살아있음.
+### 2. 프로젝트 작동
+- close project: 쓰고 있는 프로젝트 비활성화
+ㄴ _프로젝트를 쓰지 않는 경우, close project가 필수_
+ㄴ RAM-32GB, Window 12GB, 환경변수 2GB
+ㄴ 쓸 수 있는 용량 32-12-2=18GB
+ㄴ eclipse, tocation server에 다 쓰려면 안 쓰는 프로젝트 비활성화 필수
+
+- open project: 쓰지 않는 프로젝트 활성화
+## <변수>
+### 변수=변할 수 있는 수? X
+```
+int a=100; //4byte 1byte=8bit->1byte로 줄여야함
+byte a=100; //1byte
+```
+위 변수처럼 메모리 줄이는 게 필수!
+16진수 메모리 주소를 외울 수 없기에
+_**변수는 메모리 주소를 대신하는 값**_
+ㄴ한번에 하나값
+ㄴ하나의 변수에 여러가지->배열
+```
+int[] c={10,20,30}; //배열인지 구분하기 위한 int[]
+```
+## <클래스>
+class도 하나의 변수-변수 선언, method 선언
+객체지향 프로그래밍
+ㄴ class들이 모여서 하나의 조립품으로 완성
+## <이클립스 설정 변경>
+>window-preferences-general-appearances-colors and fonts-edit(글꼴변경)
+Encoding: java(eclipse)/tomcat(server)/mysql/web browser 모두 동일해야함
+UTF-8: 한글
+UTF-16: 중국어, 아랍어
+
+## <반복문 연습>
+```
+for(int n=0;n<5;n++) { //n++은 n=n+1과 동일
+	System.out.println("n의 현재값: "+n);
+	sum2+=intArr[n];
+}
+```
+1. n=0(변수선언)
+2. n=0<5 -> true(조건충족)
+3. n의 현재값: 0(조건 참이었을 때 실행)
+4. n=n+1(증가) -> n=1
+5. n=1<5 -> true(조건충족)
+6. n의 현재값: 1(조건 참이었을 때 실행)
+7. n=n+1(증가) -> n=2
+.....
+n=5<5 -> false(조건불충족) -> for문 끝!
+## <코딩>
+오늘 깨닫게 된 코드만 적어본다.
+```
+//public: 다른 클래스에 대한 접근 허가
+//변수 선언
+int a=10;
+//변수 사용
+a=20;
+//배열 선언: int[] timetable=new int[12];
+			int timetable[]=new int[12];
+            int[] timetable={1,2,3,4,5,6,7,8,9,10,11,12};
+int count=timetable.length // 이처럼 변수로 받아야 반복문에서 효율적
+String t1='ㄱ';
+String t2='가'; //t1과 t2 모두 2byte(참고: Oracle 3byte)
+String str="";
+//문자열 연산: str+"LLL"="LLL"
+```
+# 2. Object&Class
+#### _Day02-20230623_
+변수 선언: 데이터타입 변수명
+변수명=값		
+prj-src-pkg-class-main
+### <클래스>
+```
+package
+public class 클래스명{
+	public static void main(String[] args){
+    	변수, 배열, if, for, 등등
+    }
+}
+class
+public class 클래스명{
+	int a=0;
+    int b=5; //전역 변수(필드, 속성) global
+    
+    //생성자
+    public Test(){
+    	int a=10; //한 번 더 사용 가능
+        int n=a+b; //10+5
+        int n=a+c; //이거는 불가능
+    }
+    //매서드
+    public void sum(){
+    	int a=100;
+        int b=50;
+        int c=300;
+    }
+}
+```
+- scope 법칙: 위와 같이 중괄호 사이의 변수를 제일 먼저 받고 아니면 중괄호 밖을 나가서 전역 변수를 찾음
+- 문자형: char(2byte)
+- float에서 int형으로 둘다 4byte임에도 불구하고 전환이 안됨 why? 소숫점!
+### Untitled Text
