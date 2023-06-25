@@ -1,0 +1,118 @@
+<Day2>
+변수 선언: 데이터타입 변수명
+변수명=값	설정: set~ 클래스: 대순
+	변수명	추출: get~ prj:main()
+
+prj-src-pkg-class-main
+
+<Class>
+package
+public class 클래스명{
+	public static void main(String[] args){
+		변수, 배열 if, for
+	}
+}
+
+class
+public class 클래스명{
+	변수 //여기서 선언 시에 계속 사용 가능
+
+	생성자(){
+		변수
+	}
+	매서드
+}
+
+public class Test{
+	int a=0;
+	int b=5; //전역(필드, 속성) 변수 global
+
+	//생성자
+	public Test(){
+		int a=10; //한 번 더 선언 가능 //지역변수 local
+		int n=a+b; //10+5
+		int n=a+c; //이거는 안되지
+	}
+
+	//매서드
+	public void sum(){
+		int a=100;
+		int b=50;
+		int c=300;
+	}
+}
+
+#scope 법칙-위와 같이 중괄호 사이의 변수를 제일 먼저 받고 없으면 중괄호 밖에서 찾음, 같은 형제 관계의 매서드거나 생성자면은 변수를 받을 수 없음.
+
+<연산자>
++ - * / %(나머지)
+나머지가 제일 중요한거는 인정하는 부분
+
+<숫자>
+16진수: 색상, 메모리번지수를 표현할 때 쓰는 진수 a b c d e f까지 있음
+
+<배열 선언>
+1. 데이터타입[] 배열명;
+2. 데이터타입[] 배열명=new 데이터타입[갯수];
+3. 데이터타입[] 배열명={0,...,9};
+
+<기본 데이터 타입 종류>
+1. 숫자형- 정수형: int(4byte) //int형에서는 float전환 가능, but float는 소수점땜에 불가능
+	- 실수형: float(4byte)
+2. 논리형: boolean
+3. 문자형: char(2byte) //char에서는 int형으로 가능, but int형은 char로 불가능(칸이 없어서)
+
+문자열:
+" " String.class에서 String으로 받아옴
+
+int[] num=new int[3];
+new: 생성 키워드
+int[] num=new int[3];
+num 0: 메모리 주소 시작값 not 중간값 0은 index값
+
+index 다중값
+int[] num={10,20,30};
+num=>데이터 갯수 num.length
+
+Untitled Text-File-Save as
+- 이거를 하는 이유는 팀끼리 할 때 변수명 일치를 위해
+
+**문자열.split(" ") Method
+- " "(공백)기준으로 문자열을 쪼개기
+- 기준을 포함하지 않음
+출력은 한 번에 빵하고 출력해야함 근데 split은 왜하는지 모르겠네
+code.length 이런 코드를 갖다가 for문에 넣어버리면 안됨 최적화 떔에 라고 알고 있음
+String Method는 다 묶어서 게시글 작성할 것
+
+2019를 뽑으려면 0부터 4까지 뽑아야함
+**문자열 중 일부 추출 Method: substring 
+****문자열을 숫자로 바꾸는 코드 Integer.parseInt("30")
+
+main에서 클래스를 호출하면 클래스를 찾아 읽고 생성자를 호출, 생성자가 객체화 시켜줌
+
+overloading에 대한 설명: 같은 이름을 쓰되, 전달받은 변수의 갯수가 틀리거나, 타입 틀린 경우에 해당한다.
+ex) substring(int indexStart, int indexLast) vs substring(int indexStart)
+
+밥솥 <class>
+- 쌀, 물(재료)<= 변수들
+- 기능 method
+new 밥솥(쌀,물)
+public class 밥솥{
+	재료1;
+	재료2;
+	public 밥솥(1, 2){
+		재료1=쌀;
+		재료2=물;
+	}
+	public void 데우기(){
+	}
+}
+밥솥을 똑같이 여러 개 생산해서 바코드만 달리(객체 생성)
+
+Method(함수)
+전달X 반환X void method명()
+전달1 반환X void method명(data타입명 파라미터)
+전달X 반환O int method명(){ return age;}
+반환 두 개는 안됨. 하려면 배열로 묶어 놔야함.
+
+this.을 붙여야 더 빨라짐. class안의 것으로 바로 찾음

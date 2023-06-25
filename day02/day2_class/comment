@@ -1,0 +1,136 @@
+test="임재,20190509,20190510,8,남,30대후반";
+
+이름 가입일 최종방문일 방문횟수 성별 연령대
+ 0 1 2 3 4 5 6 7
+"2 0 1 9 0 5 0 9
+
+년도:2019
+	0,4
+	
+	System.out.println(day);
+	
+	//문자열 형태의 숫자는 강제 형변환 할 수 없다!!
+	int age=(int)split[5].substring(0,2);
+	
+	**************************************************************
+	//문자열 형태의 숫자는 Integer.parseInt("30");과 같이 변환시켜야 한다!!
+	**************************************************************
+	외부에서 입력받은 모든 숫자는 내부에서 문자열로 전달되기 때문에
+	반드시 Integer.parseInt()를 이용하여 숫자로 변환시켜야 한다!!
+	ㄹㅇ중요하긴해
+	=============================================================
+	main함수가 없는 클래스는 내부에 생성자가 필요
+	생성자가 하는 일: 다른 클래스가 현 클래스를 객체로 만들 때 자동 호출되는 메서드(함수)
+	
+	일반클래스(main()이 없는 클래스)
+	클래스 파일으로는 아무일을 하지 못하고,
+	반드시 객체화 되어야만 일을 할 수 있다!
+	
+	일반클래스를 객체화 시키는 방법
+	new 클래스명()
+	
+	일반클래스를 객체화 시킨 후, 저장하는 방법
+	클래스명 객체명=new 클래스명(); //new 클래스명() pdf파일을 찾는 부분, 객체명 책마다 번호를 매김
+	//        		    1, EMPClass
+							2, EMPClass 내부선언
+							  3 EMPClass()
+				   4 new
+			  5
+	EMPClass emp1=new EMPClass();
+	//EMPClass
+	1. EMPClass.class 파일 검색
+	2. EMPClass.class 파일 내부 선언
+	
+	//EMPClass()
+	3. EMPClass.class 파일 내부에서 EMPClass 이름과 동일한 생성자 호출
+	
+	//new EMPClass()
+	4. 생성자를 이용하여 EMPClass 객체 생성
+	
+	//EMPClass emp1=new EMPClass();
+	5. 생성된 객체를 변수(객체명)에 저장
+	
+	**Overloading 기법
+	조건:
+	1. 매서드명은 동일해야 한다.
+	2. 매개변수의 갯수가 다르거나, 매개변수의 데이터타입이 달려야 한다.
+	it용어집 읽기?
+	
+	========================================================
+	매서드:
+	선언위치: 클래스 내부
+	선언 방법: 
+	1. 전달X, 반환X
+	public 반환타입 매서드명(){
+		실행내용
+	}
+	예)
+	public void test1(){
+		System.out.println("test1실행");
+	}
+	2. 전달 1개, 반환 X
+	public void test2(데이터타입 변수명){
+		실행 내용
+	}
+	예)
+	public void test2(int n){ <=test2(10);
+		System.out.println("test2실행: "+n);
+	}
+	3. 전달 2개, 반환X
+	public 반환타입 매서드명(데이터타입 변수명1, 데이터타입 변수명2){
+		실행내용
+	}
+	예)
+	public void test3(int n1, int n2){ <=test3(10,20);
+		System.out.println("test3실행: "+n1+n2);
+	}
+	4. 전달 X,반환 O
+	public 리턴테이터타입 test4(){
+		실행 내용
+		return ~~;
+	}
+	예)
+	public String test4(){		<=String s=test4();
+		return "test4실행";
+	}							<=System.out.println(test4());
+	5. 전달 2개, 반환 O
+	public 리턴테이터타입 test5(데이터타입 변수명1, 데이터타입 변수명2){
+		실행 내용
+		return ~~;
+	}
+	예)
+	public String test5(int n, String s){	<=String ss=test5(20,"30");
+		System.out.println("test5실행"+n+s);	<=System.out.println(test5(20,"30"));
+		return "출력 성공"
+	}
+	6. 전달 2개, 반환 2개
+	public 리턴테이터타입 test6(데이터타입 변수명1, 데이터타입 변수명2){
+		실행 내용
+		두 개의 반환값을 하나로 묶어야 한다.
+		return 하나로 묶인 데이터;
+	}
+	예)
+	public int[] test6(int n1, int n2){	<=int[] s=test6(10,20);
+		int add=n1+n2;
+		int sub=n1-n2;
+		int[] nums={add,sub};
+		return nums;
+	}
+	7. 전달 2개, 반환 2개(데이터 타입이 다를 경우)
+	
+	*배열로 해결이 안됨->class 이용!
+	public class Result{
+		String name;
+		int age;
+		public Result(String s, Int i){
+			name=s;
+			age=i;
+		}
+	}
+	예)이름과 나이를 리턴할 경우: 
+	public Result test7(String nam, int age){	<=Result s=test7("이름",53);
+		Result r=new Result();
+		r.name=nam;
+		r.age=age;
+		return r;
+	}
