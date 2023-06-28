@@ -1,0 +1,9 @@
+ 웹페이지 만들기: HTML 태그
+ <html><head><title></title>제목</head><body>현재 페이지</body></html> //열고 닫기
+ .html, .mhtml 확장자를 이렇게 저장하고 모든 파일로 바꿔놓을 것
+ <br /> 줄바꾸기
+ <a href="https://www.naver.com">네이버</a> //</a>는 링크 주소가 거기까지인 것을 뜻함
+ <img src="" /> // "/"이 한줄로 닫히는 부분은 무조건 한 칸 띄어야함
+ 
+ html파일이 filetest파일 안에 newsImages 파일 존재
+ ./newsImages/gif파일

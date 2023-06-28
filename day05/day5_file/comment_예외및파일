@@ -1,0 +1,57 @@
+외부 데이터 다루기
+1. 예외 처리: 문제가 발생했을 때, app은 유지시키고 사용자에게
+			문제점에 대한 내용을 알리기 우함!!
+2. 예외처리 사용: 로컬 파일 / 인터넷을 통한 데이터 읽기 / 데이터 베이스를 다룰 때
+3. 예외 처리 방법
+3-1. try{ }catch(예외처리클래스 타입 매개변수){ }=>메서드 내부에서 사용
+	 매개변수: 문제가 발생한 내용을 전달(저장)받는 변수
+	 예외처리 클래스: Exception=>웬만해선 이거
+3-2. throws를 이용 -> Method 선언부에 사용
+3-3. 메서드 내부에 "try{ }catch{ }를 사용하는 경우에는
+	 다른 메서드에서 예외처리를 하지 않아도 되지만,
+	 메서드 선언부에 throws를 이용하면 다른 메서드에서는 예외 처리를 해줘야 한다!
+3-4. try{
+		실행 내용들
+		}catch(Exception e){
+			try{} 내에서 문제가 발생한 경우 해야할 일들
+		}
+3-5. try{
+		실행 내용들..
+	}catch(Exception e){
+		try{}내에서 문제가 발생했을 경우 해야 할 일들...
+	}finally{
+		try{} 내부가 성공적으로 끝났을 경우,
+		catch(){} 내부가 끝났을 경우..
+	} //열린 데이터 베이스를 닫을 경우, finally에서 해결
+==========================================================
+ 외부 로컬 파일 다루기
+ 1. 파일 쓰기: java.io.FileWriter.class
+ FileWriter fw=new FileWriter("파일 경로");
+ //파일 경로 => c:/폴더/파일.확장자
+ //C:\\filetest <=파일 미리 생성해 두어야 함
+ 
+ fw.write("문자열\n");
+ 
+ fw.close(); //실제 저장하고 파일 닫기..
+ 
+ 2. 파일 읽기: java.io.FileReader.class
+ FileReader fr=new FileReader("파일 경로"); //지정한 파일 없으면 오류
+ //줄단위로 읽기: java.io.BufferedReader.class
+ BufferedReader br=new BufferedReader(FileReader객체); //FileReader객체=>fr
+ br.readLine(); //한줄 읽기
+ String temp="";
+ while((temp=br.readLine())!=null){
+ 	temp=temp+"\n";
+ }
+ br.close()
+ 
+ =====================================================
+ FileWriter fw=null;
+ try{
+	fw=new FileWriter("파일 경로"));
+	fw.write("파일에 적을 내용");
+	fw.close();
+ }catch(IOExceptio e){
+ 	System.out.println(e.getMessage());
+ }
+ 

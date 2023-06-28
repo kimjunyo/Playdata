@@ -1,0 +1,26 @@
+ 각 클래스 역할
+ NaverMainClass(Controller): 전체적인 컨트롤
+ 
+ NaverNewsClass(Model): 한 신문사 정보 저장(1)
+ 
+ NaverDataClass: 모든 신문사를 정보 저장(2)
+ 				private void readData(String uri){~~~}
+ 				1. 파일 읽기: FileReader/ BufferedReader
+ 				2. 읽은 내용으로 NaverNewsClass 객체 생성하여
+ 				3. ArrayList에 추가: ArrayList<NaverNewsClass> news
+ 
+ NaverMethodClass: HTML 태그 생성(3)
+ 				public static String creatHTML(ArrayList<NaverNewsClass> news){~~~};
+ 				HTML tag들: <table><tr><td>
+ 									   </td>
+ 									      <a href=' '>
+ 									      	<img src=' ' />
+ 									      </a>
+ 								   </tr>
+ 						   </table>
+ 			예) String tags="<img src='  ' />";
+ 						   
+
+ NaverPrintClass(View): HTML 태그 파일로 저장(4)
+ 				public static void saveHTML(String uri,String tags){~~~};
+ 				FileWriter
