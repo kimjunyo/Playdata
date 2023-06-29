@@ -1,0 +1,122 @@
+ 상속 / 다형(유연)성 / 추상
+ 
+ 1. 상속: 부모(super) 로부터 물려받은 자원을 자식이 그대로 사용하거나
+ 		 수정해서 사용 가능.
+ 		 키워드 : extends
+ 		 Java는 한 번에 하나의 클래스만 상속 가능
+ 		 생성자는 못 물려받음
+ 		 
+ 		 예 ) public class ParentClass{
+ 		 		int a=10;
+ 		 	 }
+ 		 	 
+ 		 	 public class ParentClass2{
+ 		 		
+ 		 	 }
+ 		 	 가능
+ 		 	 public class ChildClass extends ParentClass{
+ 		 		private char c='A';
+ 		 	 }
+ 		 	 불가능
+ 		 	 public class ChildClass extends ParentClass, ParentClass2{
+ 		 
+ 		 	 }
+ 		 	 가능
+ 		 	 public class ChildClass2 extends ChildClass[
+ 		 	 	//int a=10; //char c='A'은 사용 불가능 private
+ 		 	 }
+ 		 	 -----------------------------------
+ 		 	 public class ParentClass2{
+ 		 	 	public void test(){ };
+ 		 	 }
+ 		 	 public class ChildClass3 extends ParentClass2{
+ 		 	 	//public void test(){ };
+ 		 	 	
+ 		 	 	@Override
+ 		 	 	public void test(){
+ 		 	 		System.out.print();
+ 		 	 	}
+ 		 	 	//부모로부터 물려받은 메서드 내용을 수정하는 기법: Override (상속상속상속상속)
+ 		 	 }
+ ===================================================================================
+ 접근 제한자: 외부 클래스가 현재 내 클래스 내부의 자원을 접근할 수 있는 범위를 설정.
+ 	  자원: 변수/ 생성자/ 메서드....
+ 	  
+ 	  1. public: 가장 넓은 범위
+ 	  2. default: 동일 패키지 내에서만
+ 	  3. protected: 자식까지만
+ 	  4. private: 내 클래스 내에서만..
+ 	  
+ ==========================================================================
+ 상속은 언제 사용????
+ 1. 메모리 효율...? 물려받은 변수 그대로 쓰기. 2. 동일 코드 개발하기 싫을 때
+ 
+ 동일한 부분만 상속시키고 다른 부분이 있으면 그때 생성해서 다시 합쳐서 사용
+ ==========================================================================
+ 상속 순서
+ 	예 ) public class ParentClass{  // ParentClass.class
+ 			int a=10;
+ 			public ParentClass(){
+ 			}
+ 		}
+ 									   new ParentClass() //객체 상속, 클래스 파일 상속X
+ 		public class ChildClass extends ParentClass{ // ChildClass.class
+ 			private char c='A';
+ 			public ChildClass(){
+ 			}
+ 		}
+ ======================================================================
+ interface: 코드의 유연성(객체저장) / 메서드에 대한 다형성
+ 
+ 1. interface 클래스 선언 방법
+ 	public interface 클래스명{
+ 	
+ 	}
+ 	
+ 2. interface 클래스 구성
+ 	상수 선언 // int a=10; > final int a=10;
+ 	메서드명만 선언 // public void sum(); => public abstract void sum(); abstract이 자동적으로 붙음(interface에서 메서드명 선언시)
+ 	변수 X
+ 	생성자 X
+ 	=> 단독적으로 사용하는 것이 아니라,
+ 	   다른 클래스에 구현되어 사용된다.
+ 	   객체 생성 불가능!
+ 	   
+ 	예)
+ 	public interface A{
+ 		
+ 	}
+ 	public interface B{
+ 		
+ 	}
+ 	public interface C{
+ 		
+ 	}
+ 	
+ 	public class Test implements A{
+ 	}
+ 	public class Test implements A,B,C{
+ 	}
+ 	
+ 	interface 끼리는 다중 상속 가능
+ 	public interface D extends A, B, C{
+ 	
+ 	}
+ ===============================================
+ 	일반 클래스 구성요소
+ 	1. 변수
+ 	2. 상수
+ 	3. 생성자
+ 	4. 메서드
+ 	   추상 메서드 불가능!! public void sum();
+ ===============================================
+ 	추상 클래스 구성요소
+ 	1. 변수
+ 	2. 상수
+ 	3. 생성자: new ~~(); main에서 단독 객체생성 불가능!! //상속에서만 사용가능
+ 	4. 메서드
+ 	5. 추상 메서드 가능!! public void sum();
+ => 추상 클래스=일반 클래스+interface
+ 추상 클래스: 선언 abstract 키워드가 필요
+ ==============================================
+ 추상화 인터페이스 - 게임

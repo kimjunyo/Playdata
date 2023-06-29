@@ -1,0 +1,21 @@
+window-general-workspace utf-8 encoding으로 전부 바뀜
+	        -Content Types-utf-8 encoding
+	        -Web Browser-Chrome
+	        -설정 Content Types-Default encoding을 utf-8로 업데이트-eclipse 압축
+
+//상속 class 만들 때 class superclass browse에서 superClass 고르면 됨
+자식 class의 생성자에서 부모 class의 생성자를 건드릴 수 있음
+
+public class ParentClass {
+	int a=10;			//default
+	String name="kkh";	//default
+	private boolean b=false;
+	public char c='A';
+
+public class ChildClass extends ParentClass {
+------------------------------------------
+package com.kjy.test;
+public class ChildClass2 extends ParentClass {
+
+class에서 interface 상속받을 때 Interfaces 칸 있으니까 참고
+
