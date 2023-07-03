@@ -1,0 +1,336 @@
+Enter password: **********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 12
+Server version: 8.0.33 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> cd ..
+    -> \c
+mysql> create database test;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> drop database test
+    -> \c
+mysql> drop database test;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create database test;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| test               |
++--------------------+
+5 rows in set (0.01 sec)
+
+mysql> use test;
+Database changed
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| test               |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> create table member (id,int(4), name varchar(10));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',int(4), name varchar(10))' at line 1
+mysql> create table member (id int(4), name varchar(10));
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_test |
++----------------+
+| member         |
++----------------+
+1 row in set (0.01 sec)
+
+mysql> desc memberl
+    -> \c
+mysql> desc member;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | YES  |     | NULL    |       |
+| name  | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> create table book (
+    -> titel varchar(100),
+    -> url varchar(200),
+    -> price int(4),
+    -> img varchar(20)
+    -> );
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_test |
++----------------+
+| book           |
+| member         |
++----------------+
+2 rows in set (0.00 sec)
+
+mysql> drop book
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'book' at line 1
+mysql> drop table book;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into member (id, name)
+    -> values
+    -> (1,'kkh1');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into member (name,id)
+    -> values
+    -> ('kkh2',2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into member values
+    -> (3,'kkh3');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into member(4) values;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '4) values' at line 1
+mysql> insert into member values(4);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into member(id) values(4);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> des member
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'des member' at line 1
+mysql> desc member;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | YES  |     | NULL    |       |
+| name  | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select member;
+ERROR 1054 (42S22): Unknown column 'member' in 'field list'
+mysql> select*from member;
++------+------+
+| id   | name |
++------+------+
+|    1 | kkh1 |
+|    2 | kkh2 |
+|    3 | kkh3 |
+|    4 | NULL |
++------+------+
+4 rows in set (0.00 sec)
+
+mysql> select id from member;
++------+
+| id   |
++------+
+|    1 |
+|    2 |
+|    3 |
+|    4 |
++------+
+4 rows in set (0.00 sec)
+
+mysql> update member set name='kkh4';
+Query OK, 4 rows affected (0.01 sec)
+Rows matched: 4  Changed: 4  Warnings: 0
+
+mysql> update member set name='kkh4' where id=4;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> select * from member;
++------+------+
+| id   | name |
++------+------+
+|    1 | kkh4 |
+|    2 | kkh4 |
+|    3 | kkh4 |
+|    4 | kkh4 |
++------+------+
+4 rows in set (0.00 sec)
+
+mysql> delete from member where id=2;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from member
+    -> ;
++------+------+
+| id   | name |
++------+------+
+|    1 | kkh4 |
+|    3 | kkh4 |
+|    4 | kkh4 |
++------+------+
+3 rows in set (0.00 sec)
+
+mysql> delete from member;
+Query OK, 3 rows affected (0.01 sec)
+
+mysql> select * from member
+    -> ;
+Empty set (0.00 sec)
+
+mysql> insert into member values(1,'a');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into member values(2,'b');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> for(int i=0;i<10;i++){
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'for(int i=0' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'i<10' at line 1
+    -> insert into member values(3,'c');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'i++){
+insert into member values(3,'c')' at line 1
+mysql> insert into member values(3,'c');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into member values(4,'d');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into member values(5,'e');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into member values(6,'f');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into member values(7,'g');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into member values(8,'h');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into member values(9,'j');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into member values(10,'k');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from member
+    -> ;
++------+------+
+| id   | name |
++------+------+
+|    1 | a    |
+|    2 | b    |
+|    3 | c    |
+|    4 | d    |
+|    5 | e    |
+|    6 | f    |
+|    7 | g    |
+|    8 | h    |
+|    9 | j    |
+|   10 | k    |
++------+------+
+10 rows in set (0.00 sec)
+
+mysql> select * from member limit 0,3;
++------+------+
+| id   | name |
++------+------+
+|    1 | a    |
+|    2 | b    |
+|    3 | c    |
++------+------+
+3 rows in set (0.00 sec)
+
+mysql> select * from member limit 5,3;
++------+------+
+| id   | name |
++------+------+
+|    6 | f    |
+|    7 | g    |
+|    8 | h    |
++------+------+
+3 rows in set (0.00 sec)
+
+mysql> create table book
+    -> (idx int(4) auto_increment primary,
+    -> title varchar(50)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+title varchar(50)
+)' at line 2
+mysql> create table book
+    -> (idx int(4) auto_increment primary key,
+    -> title varchar(50)
+    -> );
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+mysql> desc book;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| idx   | int         | NO   | PRI | NULL    | auto_increment |
+| title | varchar(50) | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> insert into book (title)
+    -> values
+    -> ('html');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from book
+    -> ;
++-----+-------+
+| idx | title |
++-----+-------+
+|   1 | html  |
++-----+-------+
+1 row in set (0.00 sec)
+
+mysql> insert into book (title) values('java');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from book
+    -> ;
++-----+-------+
+| idx | title |
++-----+-------+
+|   1 | html  |
+|   2 | java  |
++-----+-------+
+2 rows in set (0.00 sec)
+
+mysql> delete from book where idx=2;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into book (title)values ('spring');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from book
+    -> ;
++-----+--------+
+| idx | title  |
++-----+--------+
+|   1 | html   |
+|   3 | spring |
++-----+--------+
+2 rows in set (0.00 sec)
+
+mysql>
