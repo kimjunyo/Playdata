@@ -1,0 +1,58 @@
+    /**
+		create table employee (
+			seq_no int(4) auto_increment,		//자동 증가
+			empNo int(2) not null, 				//0
+			empName varchar(20) not null, 		//0
+			job varchar(20), 					//0: 신규경력,X: 신입
+			mgr char(2), 						//0: 신규경력,X: 신입
+			hireDate char(10) not null, 		//0
+			sale int(4) not null, 				//0
+			commission int(4),   				//X
+			deptNo int(2), 						//0: 신규경력,X: 신입
+			primary key(seq_no, empNo)			//중복값 허용하지 않는 필드 
+		);
+		**/
+테이블명 : employee (생성자 포함)
+필드명
+empNo  : 사원 고유번호
+empName  : 사원이름
+job  : 직급
+mgr  : 직급번호
+hireDate  : 입사일
+sale  : 급여
+commission : 성과급
+deptNo  : 부서번호
+
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| seq_no     | int         | NO   | PRI | NULL    | auto_increment |
+| empNo      | int         | NO   | PRI | NULL    |                |
+| empName    | varchar(20) | NO   |     | NULL    |                |
+| job        | varchar(20) | YES  |     | NULL    |                |
+| mgr        | char(2)     | YES  |     | NULL    |                |
+| hireDate   | char(10)    | NO   |     | NULL    |                |
+| sale       | int         | NO   |     | NULL    |                |
+| commission | int         | YES  |     | NULL    |                |
+| deptNo     | int         | YES  |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+		final String queryInsert ="insert into employee (empNo, empName, job, mgr, hireDate, sale, commission, deptNo) values (1001, '김사랑', '사원', 13, '2007-03-01', 300, 0, 20);
+
+	/*
+		final String querySelectAll ="select * from employee";
+		final String querySelectOne ="select * from employee where empNo=?";
+		final String queryInsert ="insert into employee (empNo, empName, job, mgr, hireDate, sale, commission, deptNo) values (?,?,?,?,?,?,0,?)";
+		final String queryUpdate ="update employee set sale=? where seq_no=?";
+		final String queryDelete ="delete from employee where job=?";
+	 */
+	 
+	 	System.out.println();
+		System.out.println("원하는 작업 번호를 입력해 주세요..");
+		System.out.println("1. 전체사원조회 / 2. 사원추가 / 3. 전사원 급여10%올림 / 4. 과장 직책 사원 삭제 / 5. 작업 종료:  ");
+		
+	db_name="db_emp";
+	private String driver = "com.mysql.cj.jdbc.Driver";
+	private String url = "jdbc:mysql://localhost:3306/"+db_name+"?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
+	private String id_mysql = "root";
+	private String pw_mysql = "1234";
+		
